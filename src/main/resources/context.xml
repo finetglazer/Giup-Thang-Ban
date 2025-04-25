@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <JarScanner>
+        <JarScanFilter
+                defaultPluggabilityScan="false"
+                defaultTldScan="false"
+                pluggabilityScanClassPath="false"
+                pluggabilityScanPackages="javax.servlet.jsp.jstl.*"
+                tldScanClassPath="false"
+                tldScanPackages="javax.servlet.jsp.jstl.*"/>
+    </JarScanner>
+</Context>

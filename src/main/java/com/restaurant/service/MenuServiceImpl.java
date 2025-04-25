@@ -71,8 +71,7 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
-    // Additional methods for Category management
-
+    @Override
     public void addCategory(Category category) {
         try {
             categoryDAO.add(category);
@@ -82,6 +81,7 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
+    @Override
     public void updateCategory(Category category) {
         try {
             categoryDAO.update(category);
@@ -91,6 +91,7 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
+    @Override
     public void removeCategory(int id) {
         try {
             categoryDAO.delete(id);
@@ -100,6 +101,7 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
+    @Override
     public Category getCategoryById(int id) {
         try {
             return categoryDAO.getById(id);
@@ -110,6 +112,7 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
+    @Override
     public List<Category> getAllCategories() {
         try {
             return categoryDAO.getAll();
@@ -117,6 +120,17 @@ public class MenuServiceImpl implements MenuService {
             System.err.println("Error getting all categories: " + e.getMessage());
             e.printStackTrace();
             return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public MenuItem getMenuItemById(int id) {
+        try {
+            return menuItemDAO.getById(id);
+        } catch (SQLException e) {
+            System.err.println("Error getting menu item by id: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 }

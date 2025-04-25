@@ -43,8 +43,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>3.3.1</version>
+                <configuration>
+                    <packagingExcludes>
+                        WEB-INF/lib/gson-2.9.0.jar:META-INF/versions/9/module-info.class
+                    </packagingExcludes>
+                </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -52,6 +58,7 @@
                 <configuration>
                     <port>8080</port>
                     <path>/</path>
+                    <contextFile>${project.basedir}/src/main/resources/context.xml</contextFile>
                 </configuration>
             </plugin>
         </plugins>
