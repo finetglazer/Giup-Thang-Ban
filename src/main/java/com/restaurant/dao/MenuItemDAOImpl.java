@@ -2,17 +2,23 @@ package com.restaurant.dao;
 
 import com.restaurant.model.Category;
 import com.restaurant.model.MenuItem;
-import com.restaurant.util.DatabaseConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MenuItemDAOImpl implements MenuItemDAO {
 
+    private final DataSource dataSource;
     private final CategoryDAO categoryDAO;
 
-    public MenuItemDAOImpl(CategoryDAO categoryDAO) {
+    @Autowired
+    public MenuItemDAOImpl(DataSource dataSource, CategoryDAO categoryDAO) {
+        this.dataSource = dataSource;
         this.categoryDAO = categoryDAO;
     }
 
@@ -20,7 +26,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
     public void add(MenuItem menuItem) throws SQLException {
         String sql = "INSERT INTO menu_items (name, price, description, category_id, is_available) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, menuItem.getName());
@@ -49,7 +55,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
     public void update(MenuItem menuItem) throws SQLException {
         String sql = "UPDATE menu_items SET name = ?, price = ?, description = ?, category_id = ?, is_available = ? WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, menuItem.getName());
@@ -67,7 +73,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM menu_items WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -79,7 +85,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
     public MenuItem getById(int id) throws SQLException {
         String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -107,7 +113,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
         String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items";
         List<MenuItem> menuItems = new ArrayList<>();
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
@@ -133,7 +139,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
         String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items WHERE category_id = ?";
         List<MenuItem> menuItems = new ArrayList<>();
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, category.getId());

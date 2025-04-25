@@ -1,19 +1,29 @@
 package com.restaurant.dao;
 
 import com.restaurant.model.Category;
-import com.restaurant.util.DatabaseConnection;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class CategoryDAOImpl implements CategoryDAO {
+
+    private final DataSource dataSource;
+
+    @Autowired
+    public CategoryDAOImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
     public void add(Category category) throws SQLException {
         String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, category.getName());
@@ -39,7 +49,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public void update(Category category) throws SQLException {
         String sql = "UPDATE categories SET name = ?, description = ? WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, category.getName());
@@ -54,7 +64,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM categories WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -66,7 +76,7 @@ public class CategoryDAOImpl implements CategoryDAO {
     public Category getById(int id) throws SQLException {
         String sql = "SELECT id, name, description FROM categories WHERE id = ?";
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
@@ -89,7 +99,7 @@ public class CategoryDAOImpl implements CategoryDAO {
         String sql = "SELECT id, name, description FROM categories";
         List<Category> categories = new ArrayList<>();
 
-        try (Connection conn = DatabaseConnection.getConnection();
+        try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 

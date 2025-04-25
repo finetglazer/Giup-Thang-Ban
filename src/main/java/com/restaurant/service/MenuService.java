@@ -5,18 +5,18 @@ import com.restaurant.model.MenuItem;
 import java.util.List;
 
 public interface MenuService {
-    // Existing methods
+    // MenuItem operations
     void addMenuItem(MenuItem item);
     void updateMenuItem(MenuItem item);
     void removeMenuItem(int id);
     List<MenuItem> getAllMenuItems();
     List<MenuItem> getMenuItemsByCategory(Category category);
+    MenuItem getMenuItemById(int id);
 
-    // Missing methods that need to be added
+    // Category operations
     void addCategory(Category category);
     void updateCategory(Category category);
     void removeCategory(int id);
     Category getCategoryById(int id);
     List<Category> getAllCategories();
-    MenuItem getMenuItemById(int id); // Optional improvement
 }
