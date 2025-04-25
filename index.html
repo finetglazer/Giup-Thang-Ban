@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1976d2;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+            color: #333;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .endpoint {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-left: 4px solid #1976d2;
+            margin-bottom: 10px;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Restaurant Management System</h1>
+    <p>Welcome to the Restaurant Management System API. This server provides REST endpoints for managing restaurant categories and menu items.</p>
+
+    <div class="note">
+        <strong>Note:</strong> This is the backend API server. The React frontend application should be running separately.
+    </div>
+
+    <h2>Available API Endpoints</h2>
+
+    <h3>Categories</h3>
+    <ul>
+        <li>
+            <div class="endpoint">GET /api/categories</div>
+            Get all categories
+        </li>
+        <li>
+            <div class="endpoint">GET /api/categories/{id}</div>
+            Get a specific category by ID
+        </li>
+        <li>
+            <div class="endpoint">POST /api/categories</div>
+            Create a new category
+        </li>
+        <li>
+            <div class="endpoint">PUT /api/categories/{id}</div>
+            Update an existing category
+        </li>
+        <li>
+            <div class="endpoint">DELETE /api/categories/{id}</div>
+            Delete a category
+        </li>
+    </ul>
+
+    <h3>Menu Items</h3>
+    <ul>
+        <li>
+            <div class="endpoint">GET /api/menu-items</div>
+            Get all menu items
+        </li>
+        <li>
+            <div class="endpoint">GET /api/menu-items/{id}</div>
+            Get a specific menu item by ID
+        </li>
+        <li>
+            <div class="endpoint">GET /api/menu-items/category/{categoryId}</div>
+            Get menu items by category
+        </li>
+        <li>
+            <div class="endpoint">POST /api/menu-items</div>
+            Create a new menu item
+        </li>
+        <li>
+            <div class="endpoint">PUT /api/menu-items/{id}</div>
+            Update an existing menu item
+        </li>
+        <li>
+            <div class="endpoint">DELETE /api/menu-items/{id}</div>
+            Delete a menu item
+        </li>
+    </ul>
+
+    <h2>Getting Started</h2>
+    <p>To use this API with the React frontend:</p>
+    <ol>
+        <li>Ensure this backend server is running (you're seeing this page, so it is!)</li>
+        <li>Start the React frontend application</li>
+        <li>The React app will connect to these API endpoints to manage restaurant data</li>
+    </ol>
+</div>
+</body>
+</html>
