@@ -1,5 +1,7 @@
 package com.restaurant.controller;
 
+import com.restaurant.dao.EmployeeDAO;
+import com.restaurant.dao.EmployeeDAOImpl;
 import com.restaurant.dto.ApiResponse;
 import com.restaurant.dto.OrderDTO;
 import com.restaurant.model.Employee;
@@ -28,11 +30,14 @@ public class OrderController {
 
     private final OrderServiceImpl orderService;
     private final MenuService menuService;
+    private final EmployeeDAO employeeDAO;
 
     @Autowired
-    public OrderController(OrderServiceImpl orderService, MenuService menuService) {
+    public OrderController(OrderServiceImpl orderService, MenuService menuService, EmployeeDAO employeeDAO) {
         this.orderService = orderService;
         this.menuService = menuService;
+
+        this.employeeDAO = employeeDAO;
     }
 
     @GetMapping
@@ -78,10 +83,16 @@ public class OrderController {
             order.setOrderTime(LocalDateTime.now());
             order.setStatus("PENDING");
 
-            // Set employee
-            Employee employee = new Employee();
-            employee.setId(request.getEmployeeId());
+            // Set employee - THIS IS THE PROBLEM AREA
+            // Instead of creating a new Employee, get it from the database
+            Employee employee = employeeDAO.getById(request.getEmployeeId());
+            if (employee == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(ApiResponse.error("Employee not found with ID: " + request.getEmployeeId()));
+            }
             order.setCreatedBy(employee);
+
+            // Rest of the method remains the same...
 
             // Add order items
             List<OrderItem> orderItems = new ArrayList<>();

@@ -22,6 +22,7 @@ public class CorsConfig {
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("DELETE");
         config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("PATCH");  // Add this line
 
         source.registerCorsConfiguration("/api/**", config);
         return new CorsFilter(source);
