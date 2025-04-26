@@ -1,0 +1,355 @@
+/* src/components/statistics/statistics.css */
+
+/* Statistics Dashboard */
+.statistics-dashboard {
+    width: 100%;
+    padding: 1rem;
+}
+
+.statistics-dashboard h1 {
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.statistics-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.statistics-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Revenue Overview */
+.revenue-overview {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.overview-header {
+    margin-bottom: 1.5rem;
+}
+
+.overview-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.overview-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.overview-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-content h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.revenue-amount {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1976d2;
+    margin-bottom: 0.5rem;
+}
+
+.growth-indicator {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.growth-indicator.positive {
+    color: #43a047;
+}
+
+.growth-indicator.negative {
+    color: #e53935;
+}
+
+.growth-arrow {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+}
+
+.period-label {
+    font-size: 0.75rem;
+    color: #757575;
+}
+
+/* Revenue Chart */
+.revenue-chart-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.chart-header h2 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.range-selector select,
+.view-selector select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-family: inherit;
+}
+
+.custom-range-form {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.date-input-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.date-input-group label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.date-input-group input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+}
+
+/* Top Selling Items */
+.top-items-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.top-items-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.top-items-header h2 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0;
+}
+
+.top-items-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.top-items-table {
+    margin-top: 2rem;
+}
+
+.top-items-table h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.top-items-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-items-table th,
+.top-items-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.top-items-table th {
+    font-weight: 500;
+    color: #555;
+}
+
+.no-data-message {
+    text-align: center;
+    padding: 2rem;
+    color: #757575;
+}
+
+/* Detailed Statistics Page */
+.detailed-statistics {
+    width: 100%;
+    padding: 1rem;
+}
+
+.detailed-statistics h1 {
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.stats-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+
+.tab-button:hover {
+    color: #1976d2;
+}
+
+.tab-button.active {
+    color: #1976d2;
+    border-bottom: 2px solid #1976d2;
+}
+
+.stats-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+.stats-form {
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.form-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #757575;
+}
+
+.revenue-result {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.revenue-result h2 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.revenue-result .revenue-amount {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1976d2;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .statistics-charts {
+        grid-template-columns: 1fr;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .chart-header,
+    .top-items-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .date-input-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .date-input-group label {
+        width: 100%;
+    }
+}

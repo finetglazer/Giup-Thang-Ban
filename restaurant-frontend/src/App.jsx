@@ -6,7 +6,10 @@ import CategoryManagement from './pages/CategoryManagement';
 import MenuManagement from './pages/MenuManagement';
 import MenuViewPage from './pages/MenuViewPage';
 import OrderManagement from './pages/OrderManagement';
+import StatisticsDashboard from './pages/StatisticsDashboard';
+import DetailedStatistics from './pages/DetailedStatistics';
 import './styles.css';
+import './components/statistics/statistics.css';
 
 const App = () => {
     return (
@@ -17,6 +20,8 @@ const App = () => {
                 <Route path="/menu-items/*" element={<MenuManagement />} />
                 <Route path="/menu-view" element={<MenuViewPage />} />
                 <Route path="/orders/*" element={<OrderManagement />} />
+                <Route path="/statistics" element={<StatisticsDashboard />} />
+                <Route path="/statistics/detailed" element={<DetailedStatistics />} />
             </Routes>
         </Router>
     );
