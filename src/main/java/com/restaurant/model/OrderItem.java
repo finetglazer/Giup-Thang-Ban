@@ -5,10 +5,11 @@ public class OrderItem {
     private MenuItem menuItem;
     private int quantity;
     private double priceAtTimeOfOrder;
+    private Order order; // Added for bidirectional relationship
 
-    // Methods to calculate subtotal
     // Constructors, getters, setters
-
+    public OrderItem() {
+    }
 
     public OrderItem(int id, MenuItem menuItem, int quantity, double priceAtTimeOfOrder) {
         this.id = id;
@@ -47,5 +48,18 @@ public class OrderItem {
 
     public void setPriceAtTimeOfOrder(double priceAtTimeOfOrder) {
         this.priceAtTimeOfOrder = priceAtTimeOfOrder;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    // Method to calculate subtotal
+    public double calculateSubtotal() {
+        return quantity * priceAtTimeOfOrder;
     }
 }

@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import CategoryManagement from './pages/CategoryManagement';
 import MenuManagement from './pages/MenuManagement';
 import MenuViewPage from './pages/MenuViewPage';
+import OrderManagement from './pages/OrderManagement';
 import './styles.css';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
                 <Route path="/categories/*" element={<CategoryManagement />} />
                 <Route path="/menu-items/*" element={<MenuManagement />} />
                 <Route path="/menu-view" element={<MenuViewPage />} />
-                {/* Add more routes for orders and statistics as needed */}
+                <Route path="/orders/*" element={<OrderManagement />} />
             </Routes>
         </Router>
     );

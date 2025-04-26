@@ -10,6 +10,10 @@ public class Employee extends User {
         this.position = position;
     }
 
+    public  Employee() {
+
+    }
+
     public String getFullName() {
         return fullName;
     }

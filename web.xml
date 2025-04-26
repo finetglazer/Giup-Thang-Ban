@@ -25,6 +25,15 @@
         <url-pattern>/api/menu-items/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>com.restaurant.controller.OrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/api/orders/*</url-pattern>
+    </servlet-mapping>
+
     <!-- Welcome File List -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
