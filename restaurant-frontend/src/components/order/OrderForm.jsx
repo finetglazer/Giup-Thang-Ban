@@ -34,8 +34,13 @@ const OrderForm = () => {
 
                 // Fetch menu items
                 const menuItemsData = await menuItemApi.getAllMenuItems();
-                setMenuItems(menuItemsData);
-                setFilteredItems(menuItemsData);
+                const mappedItems = menuItemsData.map(item => ({
+                    ...item,
+                    isAvailable: item.available // Map available to isAvailable
+                }));
+
+                setMenuItems(mappedItems);
+                setFilteredItems(mappedItems);
 
                 // If in edit mode, fetch order data
                 if (isEditMode) {
