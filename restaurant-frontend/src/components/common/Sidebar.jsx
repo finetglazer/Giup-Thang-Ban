@@ -15,6 +15,9 @@ const Sidebar = () => {
                         <li>
                             <Link to="/menu-items">Manage Menu Items</Link>
                         </li>
+                        <li>
+                            <Link to="/menu-view">View Menu</Link>
+                        </li>
                     </ul>
                 </div>
 
