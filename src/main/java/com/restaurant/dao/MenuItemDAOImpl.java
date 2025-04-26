@@ -24,7 +24,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public void add(MenuItem menuItem) throws SQLException {
-        String sql = "INSERT INTO menu_items (name, price, description, category_id, is_available) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO menu_item (name, price, description, category_id, is_available) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -53,7 +53,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public void update(MenuItem menuItem) throws SQLException {
-        String sql = "UPDATE menu_items SET name = ?, price = ?, description = ?, category_id = ?, is_available = ? WHERE id = ?";
+        String sql = "UPDATE menu_item SET name = ?, price = ?, description = ?, category_id = ?, is_available = ? WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -71,7 +71,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM menu_items WHERE id = ?";
+        String sql = "DELETE FROM menu_item WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -83,7 +83,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public MenuItem getById(int id) throws SQLException {
-        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items WHERE id = ?";
+        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_item WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -110,7 +110,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public List<MenuItem> getAll() throws SQLException {
-        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items";
+        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_item";
         List<MenuItem> menuItems = new ArrayList<>();
 
         try (Connection conn = dataSource.getConnection();
@@ -136,7 +136,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
 
     @Override
     public List<MenuItem> getByCategory(Category category) throws SQLException {
-        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_items WHERE category_id = ?";
+        String sql = "SELECT id, name, price, description, category_id, is_available FROM menu_item WHERE category_id = ?";
         List<MenuItem> menuItems = new ArrayList<>();
 
         try (Connection conn = dataSource.getConnection();

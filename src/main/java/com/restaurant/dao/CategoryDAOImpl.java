@@ -21,7 +21,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public void add(Category category) throws SQLException {
-        String sql = "INSERT INTO categories (name, description) VALUES (?, ?)";
+        String sql = "INSERT INTO category (name, description) VALUES (?, ?)";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -47,7 +47,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public void update(Category category) throws SQLException {
-        String sql = "UPDATE categories SET name = ?, description = ? WHERE id = ?";
+        String sql = "UPDATE category SET name = ?, description = ? WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -62,7 +62,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM categories WHERE id = ?";
+        String sql = "DELETE FROM category WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -74,7 +74,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public Category getById(int id) throws SQLException {
-        String sql = "SELECT id, name, description FROM categories WHERE id = ?";
+        String sql = "SELECT id, name, description FROM category WHERE id = ?";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -96,7 +96,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public List<Category> getAll() throws SQLException {
-        String sql = "SELECT id, name, description FROM categories";
+        String sql = "SELECT id, name, description FROM category";
         List<Category> categories = new ArrayList<>();
 
         try (Connection conn = dataSource.getConnection();
